@@ -1,0 +1,32 @@
+type Query {
+  hello(subject: String): String
+}
+
+type User {
+  _id: ID!
+  name: String!
+  email: String!
+  password: String!
+}
+
+type AuthData {
+  token: String!
+  userId: String!
+  _id: ID
+  name: String
+}
+
+type RootQuery {
+  user: User!
+}
+
+type RootMutation {
+  login(email: String!, password: String!): AuthData!
+
+  createUser(email: String!, name: String!, password: String!): AuthData!
+}
+
+schema {
+  query: RootQuery
+  mutation: RootMutation
+}
